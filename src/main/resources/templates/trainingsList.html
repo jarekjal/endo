@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Trainings List: </h1>
+<hr/>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Activity</th>
+        <th>Start Time</th>
+        <th>Total Time</th>
+        <th>Distance</th>
+        <th>Calories</th>
+        <th>TrackPoints</th>
+    </tr>
+
+    <tr th:each="training : ${trainings}">
+        <td><span th:text="${training.getActivityId}">  </span></td>
+        <td><span th:text="${training.getActivity}">  </span></td>
+        <td><span th:text="${training.getStartTime}">  </span></td>
+        <td><span th:text="${training.getTotalTime}">  </span></td>
+        <td><span th:text="${training.getDistance}">  </span></td>
+        <td><span th:text="${training.getCalories}">  </span></td>
+        <td><span th:text="${training.getTrackPoints}">  </span></td>
+    </tr>
+</table>
+
+
+<hr/>
+
+</body>
+</html>
