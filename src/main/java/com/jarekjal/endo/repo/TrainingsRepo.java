@@ -1,5 +1,6 @@
 package com.jarekjal.endo.repo;
 
+import com.jarekjal.endo.FileStorageException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,7 +16,18 @@ public class TrainingsRepo {
     }
 
     public void addTraining(Training training){
+        if (isTrainingAlreadyAdded(training)) throw
+                new IllegalArgumentException("Training with activityId: " + training.getActivityId() + " already added!");
+        training.setId(trainings.size());
         trainings.add(training);
+    }
+
+    private boolean isTrainingAlreadyAdded(Training training) {
+        if (trainings.stream().anyMatch(t -> t.getActivityId().equals(training.getActivityId()))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public List<Training> getTrainings() {

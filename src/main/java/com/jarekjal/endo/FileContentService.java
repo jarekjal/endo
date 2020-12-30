@@ -31,8 +31,8 @@ public class FileContentService {
         System.out.println("Activities: " + activities);
         String activity = document.getElementsByTagName("Activity").item(0).getAttributes().getNamedItem("Sport").getTextContent();
         System.out.println("Activity: " + activity);
-        String id = document.getElementsByTagName("Id").item(0).getTextContent();
-        System.out.println("Activity id: " + id);
+        String activityId = document.getElementsByTagName("Id").item(0).getTextContent();
+        System.out.println("Activity id: " + activityId);
         String startTime = document.getElementsByTagName("Lap").item(0).getAttributes().getNamedItem("StartTime").getTextContent();
         System.out.println("Lap Start Time: " + startTime);
         String totalTimeSeconds = document.getElementsByTagName("TotalTimeSeconds").item(0).getTextContent();
@@ -48,7 +48,7 @@ public class FileContentService {
         System.out.println("-----");
 
         return new Training(
-                id, activity, startTime, Double.parseDouble(totalTimeSeconds), Double.parseDouble(distanceMeters), Double.parseDouble(calories), trackpoints);
+                activityId, activity, startTime, Double.parseDouble(totalTimeSeconds), Double.parseDouble(distanceMeters), Double.parseDouble(calories), trackpoints);
 
     }
 

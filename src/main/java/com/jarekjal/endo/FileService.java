@@ -31,14 +31,13 @@ public class FileService {
         try {
             Path copyLocation = Paths.get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
             Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
-            Training training = fileContentService.getFileContent(copyLocation);
-            trainingsRepo.addTraining(training);
+            trainingsRepo.addTraining(fileContentService.getFileContent(copyLocation));
             System.out.println("Trainings in repo: " + trainingsRepo.getTrainingsCount());
 
         } catch (Exception e) {
             e.printStackTrace();
             throw new FileStorageException("Could not store file "
-                    + file + ". Please try again!");
+                    + file.getOriginalFilename() + ". Please try again! Cause: " + e.getMessage());
         }
 
 

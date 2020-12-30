@@ -6,6 +6,7 @@
 <table>
     <tr>
         <th>Id</th>
+        <th>ActivityId</th>
         <th>Activity</th>
         <th>Start Time</th>
         <th>Total Time</th>
@@ -15,6 +16,7 @@
     </tr>
 
     <tr th:each="training : ${trainings}">
+        <td><span th:text="${training.getId}">  </span></td>
         <td><span th:text="${training.getActivityId}">  </span></td>
         <td><span th:text="${training.getActivity}">  </span></td>
         <td><span th:text="${training.getStartTime}">  </span></td>

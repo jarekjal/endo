@@ -1,6 +1,7 @@
 package com.jarekjal.endo.repo;
 
 public class Training {
+    private long id;
     private String activityId;
     private String activity;
     private String startTime;
@@ -17,6 +18,14 @@ public class Training {
         this.distance = distance;
         this.calories = calories;
         this.trackPoints = trackPoints;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getActivityId() {
