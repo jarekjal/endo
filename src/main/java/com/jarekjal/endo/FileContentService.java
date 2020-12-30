@@ -48,7 +48,7 @@ public class FileContentService {
         System.out.println("-----");
 
         return new Training(
-                activityId, activity, startTime, Double.parseDouble(totalTimeSeconds), Double.parseDouble(distanceMeters), Double.parseDouble(calories), trackpoints);
+                activityId, activity, startTime, Double.parseDouble(totalTimeSeconds), Double.parseDouble(distanceMeters), Double.parseDouble(calories), trackpoints, location);
 
     }
 

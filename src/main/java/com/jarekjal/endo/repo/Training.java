@@ -1,5 +1,7 @@
 package com.jarekjal.endo.repo;
 
+import java.nio.file.Path;
+
 public class Training {
     private long id;
     private String activityId;
@@ -9,8 +11,9 @@ public class Training {
     private double distance;
     private double calories;
     private long trackPoints;
+    private Path filePath;
 
-    public Training(String activityId, String activity, String startTime, double totalTime, double distance, double calories, long trackPoints) {
+    public Training(String activityId, String activity, String startTime, double totalTime, double distance, double calories, long trackPoints, Path filePath) {
         this.activityId = activityId;
         this.activity = activity;
         this.startTime = startTime;
@@ -18,6 +21,7 @@ public class Training {
         this.distance = distance;
         this.calories = calories;
         this.trackPoints = trackPoints;
+        this.filePath = filePath;
     }
 
     public long getId() {
@@ -82,5 +86,13 @@ public class Training {
 
     public void setTrackPoints(long trackPoints) {
         this.trackPoints = trackPoints;
+    }
+
+    public Path getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(Path filePath) {
+        this.filePath = filePath;
     }
 }

@@ -1,6 +1,5 @@
 package com.jarekjal.endo;
 
-import com.jarekjal.endo.repo.Training;
 import com.jarekjal.endo.repo.TrainingsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +26,6 @@ public class FileService {
     TrainingsRepo trainingsRepo;
 
     public void uploadFile(MultipartFile file) {
-
         try {
             Path copyLocation = Paths.get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
             Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
@@ -39,8 +37,6 @@ public class FileService {
             throw new FileStorageException("Could not store file "
                     + file.getOriginalFilename() + ". Please try again! Cause: " + e.getMessage());
         }
-
-
     }
 
 }

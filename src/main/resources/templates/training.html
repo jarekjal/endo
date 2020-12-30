@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<h1>Trainings List: </h1>
+<h1>Training details: </h1>
 <hr/>
 <table>
     <tr>
@@ -14,9 +14,8 @@
         <th>Calories</th>
         <th>TrackPoints</th>
         <th>File Path</th>
-        <th>Link</th>
     </tr>
-    <tr th:each="training : ${trainings}">
+    <tr>
         <td><span th:text="${training.getId}">  </span></td>
         <td><span th:text="${training.getActivityId}">  </span></td>
         <td><span th:text="${training.getActivity}">  </span></td>
@@ -25,9 +24,9 @@
         <td><span th:text="${training.getDistance}">  </span></td>
         <td><span th:text="${training.getCalories}">  </span></td>
         <td><span th:text="${training.getTrackPoints}">  </span></td>
-        <td><span th:text="${training.getFilePath}">  </span></td>
-        <td>
-            <a th:href="@{/training/{id}(id=${training.getId})}"> LNK </a>
+        <td><a th:href="@{/training/{id}/download(id=${training.getId})}">
+                <span th:text="${training.getFilePath}">  </span>
+            </a>
         </td>
     </tr>
 </table>
