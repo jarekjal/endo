@@ -1,7 +1,9 @@
 package com.jarekjal.endo.services;
 
 import com.jarekjal.endo.exceptions.FileStorageException;
+import com.jarekjal.endo.repo.Training;
 import com.jarekjal.endo.repo.TrainingsRepo;
+import com.jarekjal.endo.services.security.IAuthenticationFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -26,11 +28,16 @@ public class FileService {
     @Autowired
     TrainingsRepo trainingsRepo;
 
+    @Autowired
+    IAuthenticationFacade authenticationFacade;
+
     public void uploadFile(MultipartFile file) {
         try {
             Path copyLocation = Paths.get(uploadDir + File.separator + StringUtils.cleanPath(file.getOriginalFilename()));
             Files.copy(file.getInputStream(), copyLocation, StandardCopyOption.REPLACE_EXISTING);
-            trainingsRepo.addTraining(fileContentService.getFileContent(copyLocation));
+            Training training = fileContentService.getFileContent(copyLocation);
+            training.setUserName(authenticationFacade.getAuthentication().getName());
+            trainingsRepo.addTraining(training);
             System.out.println("Trainings in repo: " + trainingsRepo.getTrainingsCount());
 
         } catch (Exception e) {
