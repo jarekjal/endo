@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <body>
 <h1>Training Upload: </h1>
 <hr/>
@@ -8,6 +8,9 @@
     <input type="file" name="file"/> <br/><br/>
     <button type="submit">Submit</button>
 </form>
+<hr/>
+<div sec:authorize="isAuthenticated()">
+    Authenticated as <span sec:authentication="name"></span></div>
 <hr/>
 <a th:href="@{/trainings}"> Training list </a>
 

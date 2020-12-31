@@ -12,8 +12,9 @@ public class Training {
     private double calories;
     private long trackPoints;
     private Path filePath;
+    private long userId;
 
-    public Training(String activityId, String activity, String startTime, double totalTime, double distance, double calories, long trackPoints, Path filePath) {
+    public Training(long userId, String activityId, String activity, String startTime, double totalTime, double distance, double calories, long trackPoints, Path filePath) {
         this.activityId = activityId;
         this.activity = activity;
         this.startTime = startTime;
@@ -22,6 +23,7 @@ public class Training {
         this.calories = calories;
         this.trackPoints = trackPoints;
         this.filePath = filePath;
+        this.userId = userId;
     }
 
     public long getId() {
@@ -94,5 +96,13 @@ public class Training {
 
     public void setFilePath(Path filePath) {
         this.filePath = filePath;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

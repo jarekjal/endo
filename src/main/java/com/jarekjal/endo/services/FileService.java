@@ -1,5 +1,6 @@
-package com.jarekjal.endo;
+package com.jarekjal.endo.services;
 
+import com.jarekjal.endo.exceptions.FileStorageException;
 import com.jarekjal.endo.repo.TrainingsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

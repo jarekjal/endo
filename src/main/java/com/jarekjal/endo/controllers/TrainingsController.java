@@ -1,4 +1,4 @@
-package com.jarekjal.endo;
+package com.jarekjal.endo.controllers;
 
 import com.jarekjal.endo.repo.TrainingsRepo;
 import org.springframework.beans.factory.annotation.Autowired;

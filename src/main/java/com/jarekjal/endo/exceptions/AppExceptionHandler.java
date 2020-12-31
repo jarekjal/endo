@@ -1,4 +1,4 @@
-package com.jarekjal.endo;
+package com.jarekjal.endo.exceptions;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

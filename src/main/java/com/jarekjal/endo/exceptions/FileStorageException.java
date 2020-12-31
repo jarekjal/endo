@@ -1,4 +1,4 @@
-package com.jarekjal.endo;
+package com.jarekjal.endo.exceptions;
 
 public class FileStorageException extends RuntimeException {
 
