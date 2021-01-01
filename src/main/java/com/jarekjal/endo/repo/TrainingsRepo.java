@@ -41,6 +41,10 @@ public class TrainingsRepo {
         return trainings.stream().filter(training -> currentUser.equals(training.getUserName())).collect(Collectors.toList());
     }
 
+    public List<Training> getAllTrainings() {
+        return trainings;
+    }
+
     public int getTrainingsCount() {
         String currentUser = authenticationFacade.getAuthentication().getName();
         return (int) trainings.stream().filter(training -> currentUser.equals(training.getUserName())).count();
@@ -54,4 +58,5 @@ public class TrainingsRepo {
     public Training getTraining(int id) {
         return trainings.get(id);
     }
+
 }

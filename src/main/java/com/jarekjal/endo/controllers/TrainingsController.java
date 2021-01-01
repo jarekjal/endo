@@ -23,6 +23,12 @@ public class TrainingsController {
     @Autowired
     TrainingsRepo trainingsRepo;
 
+    @GetMapping("/admin/trainings")
+    public String getAllTrainings(Model model){
+        model.addAttribute("trainings", trainingsRepo.getAllTrainings());
+        return "trainingsList";
+    }
+
     @GetMapping("/trainings")
     public String getTrainings(Model model) {
         model.addAttribute("trainings", trainingsRepo.getTrainings());
