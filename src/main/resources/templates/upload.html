@@ -10,7 +10,9 @@
 </form>
 <hr/>
 <div sec:authorize="isAuthenticated()">
-    Authenticated as <span sec:authentication="name"></span></div>
+    Authenticated as <span sec:authentication="name"></span>
+    <a href="/logout" >[LOGOUT]</a>
+</div>
 <hr/>
 <a th:href="@{/trainings}"> Training list </a>
 
