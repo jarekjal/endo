@@ -1,8 +1,18 @@
 package com.jarekjal.endo.repo;
 
+import com.jarekjal.endo.repo.converters.PathConverter;
+
+import javax.persistence.Convert;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.nio.file.Path;
 
+@Entity
+@Table(name = "TRAININGS")
 public class Training {
+
+    @Id
     private long id;
     private String activityId;
     private String activity;
@@ -12,7 +22,10 @@ public class Training {
     private double calories;
 
     private long trackPoints;
+
+    @Convert(converter = PathConverter.class) // needed if autoApply isn't true
     private Path filePath;
+
     private String userName;
 
     public Training(String userName, String activityId, String activity, String startTime, double totalTime, double distance, double calories, long trackPoints, Path filePath) {
