@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" >
 <body>
-<h1>Login Page: </h1>
+<h1>Login: </h1>
 <hr/>
 <h4>
 <div th:if="${message}">
@@ -15,6 +15,8 @@
     <input type="password" name="password" value="" /> <br/><br/>
     <button type="submit">Submit</button>
 </form>
+<hr/>
+<a href="/signIn" >[SIGN IN]</a>
 <hr/>
 </body>
 </html>
