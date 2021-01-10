@@ -31,5 +31,20 @@
     </tr>
 </table>
 <hr/>
+<h1>Training statistics: </h1>
+<table>
+    <tr>
+        <th></th>
+        <th>AVG</th>
+        <th>MIN</th>
+        <th>MAX</th>
+    </tr>
+    <tr>
+        <td>HR: </td>
+        <td><span th:text="${statistics.getAvgHR}"></span></td>
+        <td><span th:text="${statistics.getMinHR}"></span></td>
+        <td><span th:text="${statistics.getMaxHR}"></span></td>
+    </tr>
+</table>
 </body>
 </html>

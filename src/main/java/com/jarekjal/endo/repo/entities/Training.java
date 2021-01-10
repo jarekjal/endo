@@ -1,9 +1,12 @@
 package com.jarekjal.endo.repo.entities;
 
+import com.jarekjal.endo.models.TrackPoint;
 import com.jarekjal.endo.repo.converters.PathConverter;
 
 import javax.persistence.*;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "trainings")
@@ -31,6 +34,10 @@ public class Training {
     private Path filePath;
 
     private String userName;
+
+    @Transient
+    private List<TrackPoint> trackpoints = new ArrayList<>();
+
 
     public Training() {
     }
@@ -125,5 +132,30 @@ public class Training {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public List<TrackPoint> getTrackpoints() {
+        return trackpoints;
+    }
+
+    public void setTrackpoints(List<TrackPoint> trackpoints) {
+        this.trackpoints = trackpoints;
+    }
+
+    @Override
+    public String toString() {
+        return "Training{" +
+                "id=" + id +
+                ", activityId='" + activityId + '\'' +
+                ", activity='" + activity + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", totalTime=" + totalTime +
+                ", distance=" + distance +
+                ", calories=" + calories +
+                ", trackPoints=" + trackPoints +
+                ", filePath=" + filePath +
+                ", userName='" + userName + '\'' +
+                ", trackpoints=" + trackpoints +
+                '}';
     }
 }
