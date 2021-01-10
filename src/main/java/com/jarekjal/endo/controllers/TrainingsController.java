@@ -1,6 +1,8 @@
 package com.jarekjal.endo.controllers;
 
-import com.jarekjal.endo.repo.TrainingsRepo;
+import com.jarekjal.endo.repo.TrainingRepo;
+import com.jarekjal.endo.repo.entities.Training;
+import com.jarekjal.endo.services.security.IAuthenticationFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
@@ -21,29 +23,33 @@ import java.nio.file.Path;
 public class TrainingsController {
 
     @Autowired
-    TrainingsRepo trainingsRepo;
+    TrainingRepo trainingRepo;
+
+    @Autowired
+    IAuthenticationFacade authenticationFacade;
 
     @GetMapping("/admin/trainings")
     public String getAllTrainings(Model model){
-        model.addAttribute("trainings", trainingsRepo.getAllTrainings());
+        model.addAttribute("trainings", trainingRepo.findAll());
         return "trainingsList";
     }
 
     @GetMapping("/trainings")
     public String getTrainings(Model model) {
-        model.addAttribute("trainings", trainingsRepo.getTrainings());
+        model.addAttribute("trainings", trainingRepo.findByUserName(authenticationFacade.getAuthentication().getName()));
         return "trainingsList";
     }
 
     @GetMapping("/training/{id}")
-    public String getTraining(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("training", trainingsRepo.getTraining(id));
+    public String getTraining(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("training", trainingRepo.findById(id));
         return "training";
     }
 
     @GetMapping("/training/{id}/download")
-    public ResponseEntity<Resource> downloadTraining(@PathVariable("id") Integer id) throws IOException {
-        Path path = trainingsRepo.getTraining(id).getFilePath();
+    public ResponseEntity<Resource> downloadTraining(@PathVariable("id") Long id) throws IOException {
+        Training training = trainingRepo.findById(id).orElseThrow(() -> new RuntimeException("training not found"));
+        Path path = training.getFilePath();
         ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
         File file = new File(String.valueOf(path));
         HttpHeaders headers = new HttpHeaders();

@@ -1,4 +1,4 @@
-package com.jarekjal.endo.repo;
+package com.jarekjal.endo.repo.entities;
 
 import javax.persistence.*;
 

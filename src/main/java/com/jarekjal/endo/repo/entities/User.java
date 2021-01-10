@@ -1,4 +1,4 @@
-package com.jarekjal.endo.repo;
+package com.jarekjal.endo.repo.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,11 +9,11 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    String username;
+    private String username;
 
-    String password;
+    private String password;
 
-    boolean enabled;
+    private boolean enabled;
 
     public User() {
     }

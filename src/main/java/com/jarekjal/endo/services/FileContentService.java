@@ -1,7 +1,7 @@
 package com.jarekjal.endo.services;
 
 import com.jarekjal.endo.exceptions.FileStorageException;
-import com.jarekjal.endo.repo.Training;
+import com.jarekjal.endo.repo.entities.Training;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 

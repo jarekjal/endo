@@ -1,32 +1,39 @@
-package com.jarekjal.endo.repo;
+package com.jarekjal.endo.repo.entities;
 
 import com.jarekjal.endo.repo.converters.PathConverter;
 
-import javax.persistence.Convert;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.nio.file.Path;
 
 @Entity
-@Table(name = "TRAININGS")
+@Table(name = "trainings")
 public class Training {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String activityId;
+
     private String activity;
+
     private String startTime;
+
     private double totalTime;
+
     private double distance;
+
     private double calories;
 
     private long trackPoints;
 
-    @Convert(converter = PathConverter.class) // needed if autoApply isn't true
+    @Convert(converter = PathConverter.class) // needed if autoApply isn't true ???
     private Path filePath;
 
     private String userName;
+
+    public Training() {
+    }
 
     public Training(String userName, String activityId, String activity, String startTime, double totalTime, double distance, double calories, long trackPoints, Path filePath) {
         this.activityId = activityId;
