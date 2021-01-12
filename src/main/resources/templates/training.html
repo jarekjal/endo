@@ -45,6 +45,18 @@
         <td><span th:text="${statistics.getMinHR}"></span></td>
         <td><span th:text="${statistics.getMaxHR}"></span></td>
     </tr>
+    <tr>
+        <td>Altitude: </td>
+        <td><span th:text="${statistics.getAvgAlt}"></span></td>
+        <td><span th:text="${statistics.getMinAlt}"></span></td>
+        <td><span th:text="${statistics.getMaxAlt}"></span></td>
+    </tr>
+    <tr>
+        <td>Cadence: </td>
+        <td><span th:text="${statistics.getAvgCad}"></span></td>
+        <td><span th:text="${statistics.getMinCad}"></span></td>
+        <td><span th:text="${statistics.getMaxCad}"></span></td>
+    </tr>
 </table>
 </body>
 </html>
